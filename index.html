@@ -134,24 +134,24 @@
             top: -30px; 
             left: 20px;
             border-radius: 4px;
+            z-index: 5;
         }
 
-        /* --- SECTION 1: STORYBOARD --- */
+        /* --- SECTION 1: STORYBOARD (FIXED) --- */
         .section-storyboard {
             grid-row: 2;
-            height: 300px; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: auto; /* Let the height be determined by the image proportions */
             background-color: #f9f9f9;
             border: 2px dashed #999;
-            margin-top: 10px;
+            margin-top: 25px; /* Give space for the floating title */
+            padding: 20px; /* Add padding so image doesn't touch the border */
         }
 
-        .placeholder-text {
-            color: #999;
-            font-size: 30pt;
-            text-align: center;
+        .storyboard-image {
+            width: 100%;
+            height: auto; /* Scales proportionally */
+            display: block;
+            border-radius: 5px;
         }
 
         /* --- SECTION 2: MIDDLE GRID --- */
@@ -355,8 +355,7 @@
         <!-- TOP: STORYBOARD -->
         <div class="box section-storyboard">
             <div class="box-title">User Scenario (Storyboard)</div>
-            <div class="placeholder-text">[Insert Storyboard Image Here]
-            </div>
+            <img src="img/storyboard.png" alt="ARGUS User Storyboard" class="storyboard-image">
         </div>
 
         <!-- MIDDLE: 3 COLUMNS -->
