@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARGUS Project Poster - FYDP 1</title>
+    <style>
+        /* RESET & BASICS */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+
+        :root {
+            --primary-color: #003366; 
+            --accent-color: #2c7bb6;
+            --teal-color: #008ba3;
+            --text-color: #333;
+            --bg-color: #ffffff;
+            --border-thick: 3px solid #000;
+        }
+
+        body {
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* A1 PAPER DIMENSIONS */
+        .poster-container {
+            width: 594mm; 
+            height: 841mm;
+            background-color: white;
+            display: grid;
+            grid-template-rows: auto auto auto auto 1fr auto; 
+            padding: 25mm;
+            gap: 15mm;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            font-size: 24pt; 
+        }
+
+        /* --- HEADER --- */
+        header {
+            text-align: center;
+            border-bottom: var(--border-thick);
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left, .header-right {
+            width: 20%; 
+            font-size: 24pt; 
+            font-weight: bold;
+            color: #444;
+            line-height: 1.3;
+        }
+        
+        .header-left { text-align: left; }
+        
+        .header-right { 
+            text-align: right; 
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        /* Logo Styling */
+        .uiu-logo {
+            max-width: 100%;
+            height: auto;
+            max-height: 250px; 
+            object-fit: contain;
+        }
+
+        .header-center {
+            flex-grow: 1;
+            padding: 0 20px;
+        }
+
+        h1 {
+            font-size: 64pt;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        h2 {
+            font-size: 28pt;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .team-list {
+            font-size: 20pt; 
+            color: #333;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .supervisor-info {
+            font-size: 20pt; 
+            color: var(--primary-color);
+            border-top: 1px solid #ccc;
+            display: inline-block;
+            padding-top: 10px;
+            margin-top: 5px;
+        }
+
+        /* --- BOX STYLES --- */
+        .box {
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            background: #fff;
+            position: relative;
+            height: fit-content; 
+        }
+
+        .box-title {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            font-size: 24pt;
+            font-weight: bold;
+            position: absolute;
+            top: -30px; 
+            left: 20px;
+            border-radius: 4px;
+        }
+
+        /* --- SECTION 1: STORYBOARD --- */
+        .section-storyboard {
+            grid-row: 2;
+            height: 300px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9f9;
+            border: 2px dashed #999;
+            margin-top: 10px;
+        }
+
+        .placeholder-text {
+            color: #999;
+            font-size: 30pt;
+            text-align: center;
+        }
+
+        /* --- SECTION 2: MIDDLE GRID --- */
+        .section-middle {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1.3fr; 
+            gap: 15mm; 
+        }
+
+        /* Gap Analysis Table Styling */
+        table.gap-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16pt; 
+            margin-top: 15px;
+            line-height: 1.3;
+        }
+
+        .gap-table th, .gap-table td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .gap-table th {
+            background-color: #eee;
+            font-weight: bold;
+        }
+
+        /* Research Questions List */
+        ul.rq-list {
+            list-style-type: none;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        ul.rq-list li {
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 5px solid var(--accent-color);
+            font-size: 20pt;
+            line-height: 1.3;
+        }
+        ul.rq-list li strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* --- METHODOLOGY FLOWCHART STYLES --- */
+        .methodology-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .phase-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30%;
+            text-align: center;
+        }
+
+        .phase-icon svg {
+            width: 80px;
+            height: 80px;
+            fill: none;
+            stroke: #000;
+            stroke-width: 2;
+            margin-bottom: 15px;
+        }
+
+        .phase-box {
+            background-color: var(--teal-color);
+            color: white;
+            padding: 15px 10px;
+            border-radius: 10px;
+            width: 100%;
+            font-size: 16pt;
+            line-height: 1.2;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .phase-box strong {
+            display: block;
+            font-size: 20pt;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .arrow-connector {
+            font-size: 40pt;
+            color: black;
+            font-weight: bold;
+            margin-top: 60px; 
+        }
+
+        /* --- SECTION 3: SYSTEM DESIGN --- */
+        .section-system-header {
+            text-align: center;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px;
+            font-size: 28pt;
+            font-weight: bold;
+            margin-bottom: -15mm; 
+            z-index: 10;
+            border-radius: 5px;
+            width: 40%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-system {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 15mm;
+            border-top: 2px solid #333; 
+            padding-top: 25mm;
+            height: 100%; 
+        }
+
+        .design-column {
+            display: flex;
+            flex-direction: column;
+            height: 100%; 
+            border: 2px solid #333; 
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+            background: #fff;
+        }
+
+        .diagram-placeholder {
+            width: 100%;
+            flex-grow: 1; 
+            background-color: #fff;
+            border: 1px dashed #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ccc;
+            font-size: 30pt;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 16pt;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .poster-container { width: 100%; height: 100%; box-shadow: none; padding: 10mm; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="poster-container">
+        
+        <!-- HEADER -->
+        <header>
+            <div class="header-left">
+                FYDP I<br>
+                Fall 2025<br><br>
+                <span style="color:var(--primary-color); font-size:30pt;">Team<br>Protein Powder</span>
+            </div>
+
+            <div class="header-center">
+                <h1>ARGUS</h1>
+                <h2>AI-Powered Smart Glasses for Enhanced Navigation & Privacy</h2>
+                
+                <!-- Team Members -->
+                <div class="team-list">
+                    <strong>Golam Bari Fardeen</strong> (0112230321) &bull; 
+                    <strong>Namare Shakib Angkon</strong> (011222131) &bull; 
+                    <strong>Syed Zayan Anwar</strong> (011222134)<br>
+                    <strong>Md Masum Mizi</strong> (011223039) &bull; 
+                    <strong>Md. Abdullah Al Nafiz</strong> (011222141) &bull; 
+                    <strong>Shinthia Rahman</strong> (011223045)
+                </div>
+
+                <!-- Supervisor -->
+                <div class="supervisor-info">
+                    <strong>Supervisor: Novia Nurain</strong><br>
+                    <span style="font-size: 18pt; color: #555;">Assistant Professor, United International University</span>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <img src="img/UIU_logo.png" alt="UIU Logo" class="uiu-logo">
+            </div>
+        </header>
+
+        <!-- TOP: STORYBOARD -->
+        <div class="box section-storyboard">
+            <div class="box-title">User Scenario (Storyboard)</div>
+            <div class="placeholder-text">[Insert Storyboard Image Here]
+            </div>
+        </div>
+
+        <!-- MIDDLE: 3 COLUMNS -->
+        <div class="section-middle">
+            
+            <!-- LEFT: Gap Analysis -->
+            <div class="box">
+                <div class="box-title">Problem Gap Analysis</div>
+                <table class="gap-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%">Design Focus</th>
+                            <th style="width: 35%">Representative Studies</th>
+                            <th style="width: 40%">Concise Gap</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>All-in-one wearable assistance</strong></td>
+                            <td>Yu et al., 2024 (VisiGlasses)<br>Mathis et al., 2025 (LifeInsight)</td>
+                            <td>No unified, real-time navigation + interaction + privacy in one device.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fine-grained object grasp guidance</strong></td>
+                            <td>Yu et al., 2024 (VisiGlasses)</td>
+                            <td>FOV and occlusion still break precise hand-level grasp guidance.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Privacy-preserving assistive vision</strong></td>
+                            <td>Gurari et al., 2019 (VizWiz-Priv)</td>
+                            <td>Few systems blur sensitive content automatically during everyday live use.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Low-latency & connectivity-independent</strong></td>
+                            <td>Sridhar et al., 2025 (NaviSense)</td>
+                            <td>Cloud dependence causes latency and privacy risks; reliable on-device needed.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Persistent world model for decisions</strong></td>
+                            <td>(Cross-cutting limitation across systems)</td>
+                            <td>Most solutions lack a fused world model with 3D coordinates.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- CENTER: Research Questions -->
+            <div class="box">
+                <div class="box-title">Research Questions (RQs)</div>
+                <ul class="rq-list">
+                    <li>
+                        <strong>RQ1: Navigation</strong>
+                        How does ARGUS change blind/low-vision users’ indoor navigation safety and speed compared to their usual method?
+                    </li>
+                    <li>
+                        <strong>RQ2: Object Finding</strong>
+                        How well does ARGUS help users find and pick up a specific object, and which guidance style do they prefer (left/right, clock directions, distance cues)?
+                    </li>
+                    <li>
+                        <strong>RQ3: Privacy</strong>
+                        How do ARGUS privacy features affect users’ trust and comfort in public, and what information do they want the system to avoid describing?
+                    </li>
+                </ul>
+            </div>
+
+            <!-- RIGHT: Methodology (Flowchart) -->
+            <div class="box">
+                <div class="box-title">Methodology: Co-Design</div>
+                
+                <div class="methodology-container">
+                    <!-- Phase 1 -->
+                    <div class="phase-col">
+                        <div class="phase-icon">
+                            <!-- SVG: Search/Formative -->
+                            <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><path d="M11 8v6M8 11h6"></path></svg>
+                        </div>
+                        <div class="phase-box">
+                            <strong>Phase 1:</strong><br>
+                            Formative Study<br>(Co-Design)
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="arrow-connector">&#8594;</div>
+
+                    <!-- Phase 2 -->
+                    <div class="phase-col">
+                        <div class="phase-icon">
+                            <!-- SVG: Prototype/Design -->
+                            <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+                        </div>
+                        <div class="phase-box">
+                            <strong>Phase 2:</strong><br>
+                            Prototype Design<br>& Implementation
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="arrow-connector">&#8594;</div>
+
+                    <!-- Phase 3 -->
+                    <div class="phase-col">
+                        <div class="phase-icon">
+                            <!-- SVG: Evaluation/Checklist -->
+                            <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        </div>
+                        <div class="phase-box">
+                            <strong>Phase 3:</strong><br>
+                            User<br>Evaluation
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- BOTTOM: SYSTEM DESIGN HEADER -->
+        <div class="section-system-header">Proposed System Design</div>
+        
+        <!-- BOTTOM: SYSTEM DESIGN CONTENT -->
+        <div class="section-system">
+            
+            <!-- LEFT: Software Pipeline -->
+            <div class="design-column">
+                <div class="box-title">Software Pipeline</div>
+                <div class="diagram-placeholder">
+                    [Insert Software Diagram]
+                </div>
+            </div>
+
+            <!-- RIGHT: Hardware Layer -->
+            <div class="design-column">
+                <div class="box-title">Hardware Layer</div>
+                <div class="diagram-placeholder">
+                    [Insert Hardware Diagram]
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            ARGUS: Assisting the Visually Impaired through AI & Privacy-Preserving Computer Vision
+        </footer>
+
+    </div>
+</body>
+</html>
